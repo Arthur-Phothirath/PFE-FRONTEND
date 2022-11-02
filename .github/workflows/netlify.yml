@@ -1,20 +1,26 @@
 name: Build and Deploy to Netlify
 on:
   push:
+    branches:
+      - staging
   pull_request:
+    branches:
+      - staging
 jobs:
   build:
     name: deploy-netifly
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       # ( Build to ./dist or other directory... )
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
+        run: |
+          npm install
+          npm run build
         with:
-          publish-dir: "./dist"
+          publish-dir: "./dist/frontend"
           production-branch: staging
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
