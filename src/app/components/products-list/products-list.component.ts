@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../services/product/product.service';
 
 @Component({
   selector: 'app-products-list',
@@ -12,7 +12,7 @@ export class ProductsListComponent implements OnInit {
   currentProduct: Product = {};
   currentIndex = -1;
   name = '';
-  id = 0;
+  id = 1;
 
   constructor(private productService: ProductService) {}
 
