@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from 'src/app/services/product.service';
+import { ProductService } from '../../services/product/product.service';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -30,6 +30,8 @@ export class ProductDetailsComponent implements OnInit {
       this.message = '';
       this.getProduct(this.route.snapshot.params['id']);
     }
+    console.log(this.currentProduct);
+    console.log(this.viewMode);
   }
 
   getProduct(id: number): void {
