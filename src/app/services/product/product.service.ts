@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../../models/product.model';
 
 const baseUrl =
-  'https://pfe-back-na2ria54m-blop-p.vercel.app/product' ||
-  process.env['REACT_APP_BACKEND_BASE_URL'];
+  'http://localhost:8000/product' || process.env['REACT_APP_BACKEND_BASE_URL'];
 
 @Injectable({
   providedIn: 'root',

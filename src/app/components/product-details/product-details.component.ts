@@ -30,15 +30,15 @@ export class ProductDetailsComponent implements OnInit {
       this.message = '';
       this.getProduct(this.route.snapshot.params['id']);
     }
-    console.log(this.currentProduct);
-    console.log(this.viewMode);
+    // console.log(this.currentProduct);
+    // console.log(this.viewMode);
   }
 
   getProduct(id: number): void {
     this.productService.get(id).subscribe({
       next: (data) => {
         this.currentProduct = data;
-        console.log(data);
+        // console.log(data);
       },
       error: (e) => console.error(e),
     });
@@ -55,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.productService.update(this.currentProduct.id, data).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.currentProduct.status = status;
         this.message = res.message
           ? res.message
@@ -72,7 +72,7 @@ export class ProductDetailsComponent implements OnInit {
       .update(this.currentProduct.id, this.currentProduct)
       .subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           this.message = res.message
             ? res.message
             : 'This product was updated successfully!';
@@ -84,7 +84,7 @@ export class ProductDetailsComponent implements OnInit {
   deleteProduct(): void {
     this.productService.delete(this.currentProduct.id).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.router.navigate(['/products']);
       },
       error: (e) => console.error(e),
