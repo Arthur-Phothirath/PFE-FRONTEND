@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { Product } from '../../models/product.model';
 
 const baseUrl =
-  'http://localhost:8000/product' || process.env['REACT_APP_BACKEND_BASE_URL'];
+  'http://localhost:8000/product' ||
+  process.env['ANGULAR_APP_BACKEND_BASE_URL'] + 'product';
 
 @Injectable({
   providedIn: 'root',
