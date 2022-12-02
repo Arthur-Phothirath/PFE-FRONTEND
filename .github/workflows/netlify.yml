@@ -22,6 +22,8 @@ jobs:
 
       - name: Publish
         uses: netlify/actions/build@master
+        with:
+          production-deploy: true
         env:
           # NETLIFY_BASE: site
           NETLIFY_CMD: npm build
