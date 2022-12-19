@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product.model';
-import { ProductService } from '../../services/product/product.service';
+import { Product } from '../../../models/product.model';
+import { ProductService } from '../../../services/product/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -13,6 +13,7 @@ export class AddProductComponent implements OnInit {
     description: '',
     price: 0,
     status: '',
+    categories: [1],
   };
   submitted = false;
 
@@ -24,11 +25,14 @@ export class AddProductComponent implements OnInit {
     const data = {
       name: this.product.name,
       description: this.product.description,
+      price: this.product.price,
+      status: this.product.status,
+      categories: this.product.categories,
     };
 
     this.productService.create(data).subscribe({
       next: (res) => {
-        // console.log(res);
+        console.log(res);
         this.submitted = true;
       },
       error: (e) => console.error(e),
@@ -42,6 +46,7 @@ export class AddProductComponent implements OnInit {
       description: '',
       price: 0,
       status: 'on road',
+      categories: [1],
     };
   }
 }
