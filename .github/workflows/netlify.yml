@@ -28,7 +28,7 @@ jobs:
           # NETLIFY_BASE: site
           NETLIFY_CMD: npm build
           # NETLIFY_DIR: site/web
-          ANGULAR_APP_BACKEND_BASE_URL: https://pfe-back-e8qw8ytmi-blop-p.vercel.app/
+          ANGULAR_APP_BACKEND_BASE_URL: https://pfe-back-blop-p.vercel.app/
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 # jobs:
