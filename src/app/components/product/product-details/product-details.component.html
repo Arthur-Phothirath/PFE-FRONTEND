@@ -60,21 +60,17 @@
 
     <button
       class="badge badge-primary mr-2"
-      *ngIf="currentProduct.status"
+      *ngIf="currentProduct.status === 'true'"
       (click)="updatePublished('false')"
     >
       UnPublish
     </button>
     <button
-      *ngIf="!currentProduct.status"
+      *ngIf="!currentProduct.status || currentProduct.status === 'false'"
       class="badge badge-primary mr-2"
       (click)="updatePublished('true')"
     >
       Publish
-    </button>
-
-    <button class="badge badge-danger mr-2" (click)="deleteProduct()">
-      Delete
     </button>
 
     <button
@@ -85,6 +81,15 @@
       Update
     </button>
     <p>{{ message }}</p>
+    <button class="badge badge-danger mr-2" (click)="deleteProduct()">
+      Delete
+    </button>
+    <button
+      class="badge badge-warning"
+      (click)="returnToProductList()"
+    >
+      Return
+    </button>
   </div>
 
   <div *ngIf="!currentProduct.id">

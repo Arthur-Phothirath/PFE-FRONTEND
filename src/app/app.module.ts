@@ -13,6 +13,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { IndexComponent } from './components/user/index/index.component';
+import { ViewComponent } from './components/user/view/view.component';
+import { CreateComponent } from './components/user/create/create.component';
+import { EditComponent } from './components/user/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
+    IndexComponent,
+    ViewComponent,
+    CreateComponent,
+    EditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [httpInterceptorProviders],

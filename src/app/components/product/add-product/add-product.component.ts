@@ -11,7 +11,8 @@ export class AddProductComponent implements OnInit {
   product: Product = {
     name: '',
     description: '',
-    price: 0,
+    price_init: 0,
+    price_sale: 0,
     status: '',
     categories: [1],
   };
@@ -25,7 +26,8 @@ export class AddProductComponent implements OnInit {
     const data = {
       name: this.product.name,
       description: this.product.description,
-      price: this.product.price,
+      price_init: this.product.price_init,
+      price_sale: this.product.price_sale,
       status: this.product.status,
       categories: this.product.categories,
     };
@@ -42,9 +44,10 @@ export class AddProductComponent implements OnInit {
   newProduct(): void {
     this.submitted = false;
     this.product = {
-      name: '',
-      description: '',
-      price: 0,
+      name: 'Test',
+      description: 'Test',
+      price_init: 0,
+      price_sale: 0,
       status: 'on road',
       categories: [1],
     };
