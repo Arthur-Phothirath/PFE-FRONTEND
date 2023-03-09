@@ -18,6 +18,8 @@ export class ProductDetailsComponent implements OnInit {
     status: '',
   };
   message = '';
+  displayPublish = "Published"
+  displayUnpublish = "Unpublished"
 
   constructor(
     private productService: ProductService,
@@ -44,25 +46,18 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  updatePublished(status: string): void {
-    // const data = {
-    //   name: this.currentProduct.name,
-    //   description: this.currentProduct.description,
-    //   status: status,
-    // };
-
-    const statusProduct = status
-
+  updatePublished(statusUpdate: string): void {
     this.message = '';
-
-    this.productService.update(this.currentProduct.id, this.currentProduct).subscribe({
-      next: (res) => {
-        // console.log(res);
-        this.currentProduct.status = statusProduct;
+    this.currentProduct.status = statusUpdate;
+    this.productService
+      .update(this.currentProduct.id, this.currentProduct)
+      .subscribe({
+        next: (res) => {
+        console.log(this.currentProduct)
         this.message = res.message
           ? res.message
           : 'The status was updated successfully!';
-      },
+        },
       error: (e) => console.error(e),
     });
   }

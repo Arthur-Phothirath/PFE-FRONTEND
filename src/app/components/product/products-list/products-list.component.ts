@@ -24,7 +24,7 @@ export class ProductsListComponent implements OnInit {
     this.productService.getAll().subscribe({
       next: (data) => {
         this.products = data;
-        console.log(data);
+        // console.log(data);
       },
       error: (e) => console.error(e),
     });
@@ -59,7 +59,7 @@ export class ProductsListComponent implements OnInit {
     this.productService.findById(this.id).subscribe({
       next: (data) => {
         this.products = data;
-        console.log(data);
+        // console.log(data);
       },
       error: (e) => console.error(e),
     });

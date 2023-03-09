@@ -10,8 +10,9 @@
     </div>
     <div>
       <label><strong>Status:</strong></label>
-      {{ currentProduct.status ? "Published" : "Pending" }}
-    </div>
+      <span *ngIf="currentProduct.status === 'Published'">{{displayPublish}}</span>
+      <span *ngIf="currentProduct.status !== 'Published'">{{displayUnpublish}}</span>
+   </div>
 
     <a
       class="badge badge-warning"
@@ -54,21 +55,22 @@
 
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentProduct.status ? "Published" : "Pending" }}
+        <span *ngIf="currentProduct.status === 'Published'">{{displayPublish}}</span>
+        <span *ngIf="currentProduct.status !== 'Published'">{{displayUnpublish}}</span>
       </div>
     </form>
 
     <button
       class="badge badge-primary mr-2"
-      *ngIf="currentProduct.status === 'true'"
-      (click)="updatePublished('false')"
+      *ngIf="currentProduct.status === 'Published'"
+      (click)="updatePublished('Unpublished')"
     >
-      UnPublish
+      Unpublished
     </button>
     <button
-      *ngIf="!currentProduct.status || currentProduct.status === 'false'"
+      *ngIf="!currentProduct.status || currentProduct.status === 'Unpublished'"
       class="badge badge-primary mr-2"
-      (click)="updatePublished('true')"
+      (click)="updatePublished('Published')"
     >
       Publish
     </button>
@@ -84,10 +86,7 @@
     <button class="badge badge-danger mr-2" (click)="deleteProduct()">
       Delete
     </button>
-    <button
-      class="badge badge-warning"
-      (click)="returnToProductList()"
-    >
+    <button class="badge badge-warning" (click)="returnToProductList()">
       Return
     </button>
   </div>

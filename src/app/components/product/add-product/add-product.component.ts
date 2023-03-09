@@ -13,7 +13,7 @@ export class AddProductComponent implements OnInit {
     description: '',
     price_init: 0,
     price_sale: 0,
-    status: '',
+    status: 'Unpublished',
     categories: [1],
   };
   submitted = false;
@@ -34,7 +34,7 @@ export class AddProductComponent implements OnInit {
 
     this.productService.create(data).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.submitted = true;
       },
       error: (e) => console.error(e),
@@ -48,7 +48,7 @@ export class AddProductComponent implements OnInit {
       description: 'Test',
       price_init: 0,
       price_sale: 0,
-      status: 'on road',
+      status: 'Unpublished',
       categories: [1],
     };
   }
