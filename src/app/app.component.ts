@@ -17,11 +17,8 @@ export class AppComponent {
 
   constructor(
     private storageService: StorageService,
-    translate: TranslateService
-  ) {
-    translate.setDefaultLang('fr');
-    translate.use('fr');
-  }
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -35,6 +32,8 @@ export class AppComponent {
 
       this.username = user.username;
     }
+    const browserLang = this.translateService.getBrowserLang();
+    console.log(browserLang);
   }
 
   logout(): void {
