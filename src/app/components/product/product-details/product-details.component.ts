@@ -14,10 +14,12 @@ export class ProductDetailsComponent implements OnInit {
   @Input() currentProduct: Product = {
     name: '',
     description: '',
-    price: 0,
+    price_init: 0,
     status: '',
   };
   message = '';
+  displayPublish = "Published"
+  displayUnpublish = "Unpublished"
 
   constructor(
     private productService: ProductService,
@@ -44,23 +46,18 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  updatePublished(status: string): void {
-    const data = {
-      name: this.currentProduct.name,
-      description: this.currentProduct.description,
-      status: status,
-    };
-
+  updatePublished(statusUpdate: string): void {
     this.message = '';
-
-    this.productService.update(this.currentProduct.id, data).subscribe({
-      next: (res) => {
-        // console.log(res);
-        this.currentProduct.status = status;
+    this.currentProduct.status = statusUpdate;
+    this.productService
+      .update(this.currentProduct.id, this.currentProduct)
+      .subscribe({
+        next: (res) => {
+        console.log(this.currentProduct)
         this.message = res.message
           ? res.message
           : 'The status was updated successfully!';
-      },
+        },
       error: (e) => console.error(e),
     });
   }
@@ -85,9 +82,13 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.delete(this.currentProduct.id).subscribe({
       next: (res) => {
         // console.log(res);
-        this.router.navigate(['/products']);
+        this.router.navigate(['products/list']);
       },
       error: (e) => console.error(e),
     });
+  }
+
+  returnToProductList(): void {
+    this.router.navigate(['products/list']);
   }
 }

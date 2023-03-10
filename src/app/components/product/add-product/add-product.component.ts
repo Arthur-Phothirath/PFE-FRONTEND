@@ -11,8 +11,9 @@ export class AddProductComponent implements OnInit {
   product: Product = {
     name: '',
     description: '',
-    price: 0,
-    status: '',
+    price_init: 0,
+    price_sale: 0,
+    status: 'Unpublished',
     categories: [1],
   };
   submitted = false;
@@ -25,14 +26,15 @@ export class AddProductComponent implements OnInit {
     const data = {
       name: this.product.name,
       description: this.product.description,
-      price: this.product.price,
+      price_init: this.product.price_init,
+      price_sale: this.product.price_sale,
       status: this.product.status,
       categories: this.product.categories,
     };
 
     this.productService.create(data).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.submitted = true;
       },
       error: (e) => console.error(e),
@@ -42,10 +44,11 @@ export class AddProductComponent implements OnInit {
   newProduct(): void {
     this.submitted = false;
     this.product = {
-      name: '',
-      description: '',
-      price: 0,
-      status: 'on road',
+      name: 'Test',
+      description: 'Test',
+      price_init: 0,
+      price_sale: 0,
+      status: 'Unpublished',
       categories: [1],
     };
   }

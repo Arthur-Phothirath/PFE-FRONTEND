@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StorageService } from './services/storage/storage.service';
 import { AuthService } from './services/auth/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,10 @@ export class AppComponent {
   showModeratorBoard = false;
   username?: string;
 
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private storageService: StorageService,
+    private translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -28,6 +32,8 @@ export class AppComponent {
 
       this.username = user.username;
     }
+    const browserLang = this.translateService.getBrowserLang();
+    console.log(browserLang);
   }
 
   logout(): void {
