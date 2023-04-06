@@ -1,0 +1,44 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">{{"Global.Title" | translate}}</a>
+
+    <div class="navbar-nav mr-auto">
+      <li *ngIf="roles.includes('admin')" class="nav-item">
+        <a routerLink="" class="nav-link">Admin View</a>
+      </li>
+      <li *ngIf="roles.includes('guest')" class="nav-item">
+        <a routerLink="" class="nav-link">Guest View</a>
+      </li>
+      <li *ngIf="roles.includes('moderator')" class="nav-item">
+        <a routerLink="" class="nav-link">Moderator View</a>
+      </li>
+      <li *ngIf="roles.includes('moderator')" class="nav-item">
+        <a routerLink="users/list" class="nav-link">{{"Header.User" | translate}}</a>
+      </li>
+      <li *ngIf="roles.includes('moderator') || roles.includes('admin')" class="nav-item">
+        <a routerLink="products/list" class="nav-link">{{"Header.Product" | translate}}</a>
+      </li>
+      <li *ngIf="roles.includes('admin')" class="nav-item">
+        <a routerLink="products/add" class="nav-link">{{"Header.Adding.Product" | translate}}</a>
+      </li>
+    </div>
+
+    <div class="navbar-nav">
+      <li *ngIf="roles.includes('guest')" class="nav-item">
+        <a routerLink="#" class="nav-link">Panier</a>
+      </li>
+      <li *ngIf="!isLoggedIn" class="nav-item">
+        <a routerLink="login" class="nav-link">LogIn</a>
+      </li>
+      <li *ngIf="isLoggedIn" class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+      <li *ngIf="!isLoggedIn" class="nav-item">
+        <a routerLink="register" class="nav-link">Register</a>
+      </li>
+    </div>
+  </nav>
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
