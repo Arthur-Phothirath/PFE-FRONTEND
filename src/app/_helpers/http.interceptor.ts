@@ -14,6 +14,12 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      req = req.clone({
+        headers: req.headers.set('Authorization', 'Bearer ' + token),
+      });
+    }
     req = req.clone({
       withCredentials: true,
     });
